@@ -1,3 +1,5 @@
-for(int i = arr.size()-1;i>= 0;i--){
-    //     ans[i] *= arr[i];
+for(auto it: ans){
+    //     for(auto i: it){
+    //         cout<<i<<" ";
+    //     }
     // }
