@@ -1,5 +1,3 @@
-for(auto it: ans){
-    //     for(auto i: it){
-    //         cout<<i<<" ";
-    //     }
-    // }
+
+    for(int i =0;i<str.size();i++){
+        map[str[i]]++;
