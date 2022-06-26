@@ -16,7 +16,7 @@ bool check(string str1, string str2)
     }
 }
 
-// Answer: Check the freq of each char in both the strings, if the string are parmutation of each others, they will have same char freq, 
+// Answer: Check the freq of each char in both the strings, if the string are parmutation of each others, they will have same char freq,  
 
 bool checkOptimised(string s1, string s2)
 {
