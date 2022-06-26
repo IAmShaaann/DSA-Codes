@@ -1,3 +1,3 @@
-for(int i = arr.size()-1;i>= 0;i--){
-    //     ans[i] *= arr[i];
-    // }
+
+    for(int i =0;i<str.size();i++){
+        map[str[i]]++;
