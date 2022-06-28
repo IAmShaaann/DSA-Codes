@@ -1,3 +1,4 @@
+// Given 2 strings, can you make both string equal with either one of these opertions: Insert, Delete, Edit
 #include <bits/stdc++.h>
 using namespace std;
 bool oneEditAway(string s1, string s2)

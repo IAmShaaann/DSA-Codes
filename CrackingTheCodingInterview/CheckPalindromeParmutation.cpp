@@ -1,3 +1,5 @@
+// Given a string, check if there exist a palindrome parmutation of the string. 
+
 #include <bits/stdc++.h>
 using namespace std;
 bool checkPalindromeParmutation(string str)
