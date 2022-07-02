@@ -1,160 +1,99 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// A Linked List Node
 class Node
 {
-public:
-    int data;
-    Node *next;
+  public:
+    int data;        // data field
+    Node* next;     // pointer to the next node
+}; 
 
-    Node()
-    { // Default constructor
-        data = 0;
-        next = nullptr;
-    }
-    Node(int data)
-    {
-        this->data = data;
-        this->next = nullptr;
-    }
-};
-
-class LinkedList
+Node* newNode(int key, Node* next)
 {
-    Node *head;
-
-public:
-    LinkedList()
-    {
-        head = nullptr;
-    }
-    void push(int data);
-    void print();
-    void remove(int data);
-    void removeDuplicates();
-};
-void LinkedList::push(int data)
-{
-    Node *newNode = new Node(data);
-    // if first node:
-    if (head == nullptr)
-    {
-        head = newNode;
-        return;
-    }
-    Node *temp = head;
-    while (temp->next != nullptr)
-    {
-        temp = temp->next;
-    }
-    temp->next = newNode;
+    // allocate a new node in a heap and set its data
+    Node* node = new Node;
+    node->data = key;
+ 
+    // set the `.next` pointer of the new node to point to the current
+    // first node of the list.
+    node->next = next;
+ 
+    return node;
 }
-void LinkedList::remove(int nodeOffset)
+ 
+// Function for linked list implementation from a given set of keys
+Node* constructList(vector<int> const &keys)
 {
-    Node *temp1 = head, *temp2 = NULL;
-    int ListLen = 0;
-
-    if (head == NULL)
+    Node* head, *node = nullptr;
+ 
+    // start from the end of the array
+    for (int i = keys.size() - 1; i >= 0; i--)
     {
-        cout << "List empty." << endl;
-        return;
+        node = newNode(keys[i], node);
+        head = node;
     }
-
-    // Find length of the linked-list.
-    while (temp1 != NULL)
-    {
-        temp1 = temp1->next;
-        ListLen++;
-    }
-
-    // Check if the position to be
-    // deleted is less than the length
-    // of the linked list.
-    if (ListLen < nodeOffset)
-    {
-        cout << "Index out of range"
-             << endl;
-        return;
-    }
-
-    // Declare temp1
-    temp1 = head;
-
-    // Deleting the head.
-    if (nodeOffset == 1)
-    {
-
-        // Update head
-        head = head->next;
-        delete temp1;
-        return;
-    }
-
-    // Traverse the list to
-    // find the node to be deleted.
-    while (nodeOffset-- > 1)
-    {
-
-        // Update temp2
-        temp2 = temp1;
-
-        // Update temp1
-        temp1 = temp1->next;
-    }
-
-    // Change the next pointer
-    // of the previous node.
-    temp2->next = temp1->next;
-
-    // Delete the node
-    delete temp1;
+ 
+    return head;
 }
-void LinkedList::print()
+
+// Naive Method:
+// Node* linkedListNaive()
+// {
+//     // construct three linked list nodes
+//     Node* first = newNode(1);
+//     Node* second = newNode(2);
+//     Node* third = newNode(3);
+ 
+//     // rearrange the pointers to construct a list
+//     Node* head = first;
+//     first->next = second;
+//     second->next = third;
+ 
+//     // return a pointer to the first node in the list
+//     return head;
+// }
+ 
+
+void printList(Node* head)
 {
-    Node *current = head;
-    while (current != nullptr)
+    Node* current = head;
+    while (current)
     {
         cout << current->data << " -> ";
         current = current->next;
     }
-    cout << "End" << endl;
+    cout << " NULL " << endl;
+
 }
-
-void LinkedList::removeDuplicates ()
-
-{
-    cout<<"Called"<<endl;
-
-    unordered_map<int, int> map;
-    Node *current = head;
-    int index = 0;
-    while (current != nullptr)
-    {
-        cout<<"IN while loop: "<<endl;
-        map[current->data]++;
-        if (map[current->data] > 1)
-        {
-            current->next = current->next->next;
-            index++;
-        }
+int kthToLast(Node* head, int k){
+    int count = 0;
+    Node* current = head;
+    while(current){
+        cout<<"Current: "<<current->data<<endl;
+        count++;
         current = current->next;
-        index++;
     }
-    for(auto it: map){
-        cout<<it.first<<" "<<it.second<<endl;
-    }
-    // list->print();
+    cout<<"Size: "<<count<<endl;
+    int kthElement = count - k;
+    current = head;
+    while(kthElement--){
+        current = current->next;
+    } 
+    cout<<"Kth to last element: "<<current ->data<<endl;
+    return current->data;
 }
-
 int main()
+
 {
-    vector<int> arr = {20, 34, 52, 11, 74, 11, 34, 85, 45, 65, 85};
-    LinkedList* list;
-    for (int i = 0; i < arr.size(); i++)
-    {
-        list->push(arr[i]);
-    }
-    list->print();
-    list->removeDuplicates();
+    Node* head = new Node();;
+    vector<int> arr = {10,22,33,55,44,66,77,88,99,44};
+    head = constructList(arr);
+    printList(head);
+    int res = kthToLast(head, 2);
+    cout<<"Kth to last element is: "<<res;
+
+
+    
+
     return 0;
 }
