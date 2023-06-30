@@ -1,87 +1,93 @@
 #include <iostream>
 #include <string>
-#include <memory>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-class IGameObject
+class Animal
 {
 public:
-    virtual ~IGameObject() {}
-    virtual void Update() = 0;
-    virtual void Render() = 0;
+    virtual void make_sound() = 0;
 };
 
-class Plane : public IGameObject
+class Dog : public Animal
 {
-public:
-    Plane() {}
-    void Update() {}
-    void Render() {}
-};
-
-class Boat : public IGameObject
-{
-public:
-    Boat() {}
-    void Update() {}
-    void Render() {}
-};
-
-enum class GameObjectType
-{
-    BOAT,
-    PLANE
-};
-
-class GameObjectFactory
-{
-public:
-    // Making function static will ensure all objects of this class share the same function.
-    static shared_ptr<IGameObject> CreateObject(GameObjectType type)
+    void make_sound() override
     {
-        if (GameObjectType::PLANE == type)
-        {
-            s_count_plane_instance++;
-            return make_shared<Plane>();
-        }
-        else if (GameObjectType::BOAT == type)
-        {
-            s_count_boat_instance++;
-            return make_shared<Boat>();
-        }
-        return nullptr;
+        cout << "Dog Barking. " << endl;
     }
-    static void print_instance_count(GameObjectType type)
+};
+class Cat : public Animal
+{
+    void make_sound() override
     {
-        if (GameObjectType::PLANE == type)
+        cout << "Cat Meowing. " << endl;
+    }
+};
+class Duck : public Animal
+{
+    void make_sound() override
+    {
+        cout << "Duck Quacking. " << endl;
+    }
+};
+
+class AnimalFactory
+{
+public:
+    Animal *create_animal(string type)
+    {
+        int current_type_count = type == "dog" ? dog_count : type == "cat" ? cat_count
+                                                                           : duck_count;
+
+        if (type == 'dog')
         {
-            cout << "Plane instance count. " << s_count_plane_instance << endl;
+            dog_count++;
+            if (check_animal_difference())
+            {
+            }
+            return new Dog();
         }
-        else if (GameObjectType::BOAT == type)
+        else if (type == 'cat')
         {
-            cout << "Boat instance count. " << s_count_boat_instance << endl;
+            cat_count++;
+
+            return new Cat();
         }
+        else if (type == "duck")
+        {
+            duck_count++;
+            return new Duck();
+        }
+        else
+        {
+            return nullptr;
+        }
+    }
+    bool check_animal_difference()
+    {
+        int maxCount = std::max({dog_count, cat_count, duck_count});
+        int minCount = std::min({dog_count, cat_count, duck_count});
+
+        return (maxCount - minCount <= 1);
+    }
+
+    int generate_random()
+    {
+        srand(std::time(0));
+        int randomNumber = std::rand() % 3 + 1;
+        return randomNumber;
     }
 
 private:
-    GameObjectFactory() {}
-    ~GameObjectFactory() {}
-    GameObjectFactory(GameObjectFactory &game_instance) = delete;
-    static int s_count_boat_instance;
-    static int s_count_plane_instance;
-};
+    static int dog_count = 0;
+    static int cat_count = 0;
+    static int duck_count = 0;
 
-int GameObjectFactory::s_count_boat_instance = 0;
-int GameObjectFactory::s_count_plane_instance = 0;
+}
 
-int main()
+int
+main()
 {
-    shared_ptr<IGameObject> game_instance_one = GameObjectFactory::CreateObject(GameObjectType::PLANE);
-    shared_ptr<IGameObject> game_instance_two = GameObjectFactory::CreateObject(GameObjectType::BOAT);
-    shared_ptr<IGameObject> game_instance_three = GameObjectFactory::CreateObject(GameObjectType::PLANE);
-
-    GameObjectFactory::print_instance_count(GameObjectType::PLANE);
-    GameObjectFactory::print_instance_count(GameObjectType::BOAT);
-
     return 0;
 }
