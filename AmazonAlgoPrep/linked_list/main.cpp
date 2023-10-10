@@ -171,6 +171,7 @@ public:
 
 int main()
 {
+<<<<<<< HEAD
     // int arr[] = {12, 23, 34, 45, 56, 67, 78, 89, 90, 29, 34, 21, 98, 87, 76, 65, 54, 43, 32, 21, 13, 14}; // Use square brackets for array initialization
     // for (int i = 0; i <= sizeof(arr) / sizeof(arr[0]); i++) // Use sizeof to get the size of the array
     // {
@@ -202,6 +203,22 @@ int main()
     // LinkedList *res = list->sum_list(list_one, list_two);
     // res->display();
     cout << list->intersection(list_one, list_two);
+=======
+    int arr[] = {12, 23, 34, 45, 56, 67, 78, 89, 90, 29, 34, 21, 98, 87, 76, 65, 54, 43, 32, 21, 13, 14}; // Use square brackets for array initialization
+    LinkedList *list = new LinkedList();
+    for (int i = 0; i <= sizeof(arr) / sizeof(arr[0]); i++) // Use sizeof to get the size of the array
+    {
+        list->insert(arr[i]);
+    }
+    // list->display();
+    // list->remove(12);
+    list->display();
+    // list->remove_duplicates();
+    // list->display();
+    // cout << "Kth to last: " << list->kth_last_element(3);
+    list->partition(54);
+    list->display();
+>>>>>>> de953fa (Day 5 - 100 Days of DSA)
 
     return 0;
 }
