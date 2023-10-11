@@ -172,11 +172,15 @@ public:
 int main()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d4f9fad (Day 7 - 100 days of code)
     // int arr[] = {12, 23, 34, 45, 56, 67, 78, 89, 90, 29, 34, 21, 98, 87, 76, 65, 54, 43, 32, 21, 13, 14}; // Use square brackets for array initialization
     // for (int i = 0; i <= sizeof(arr) / sizeof(arr[0]); i++) // Use sizeof to get the size of the array
     // {
     //     list->insert(arr[i]);
     // }
+<<<<<<< HEAD
     // list->display();
     // list->remove(12);
     // list->display();
@@ -210,15 +214,40 @@ int main()
     {
         list->insert(arr[i]);
     }
+=======
+>>>>>>> d4f9fad (Day 7 - 100 days of code)
     // list->display();
     // list->remove(12);
-    list->display();
+    // list->display();
     // list->remove_duplicates();
     // list->display();
     // cout << "Kth to last: " << list->kth_last_element(3);
+<<<<<<< HEAD
     list->partition(54);
     list->display();
 >>>>>>> de953fa (Day 5 - 100 Days of DSA)
+=======
+    // list->partition(54);
+    // list->display();
+
+    LinkedList *list = new LinkedList();
+
+    Node *list_one = new Node(3);
+    list_one->next = new Node(1);
+    list_one->next->next = new Node(5);
+    list_one->next->next->next = new Node(9);
+    list_one->next->next->next->next = new Node(7);
+
+    Node *list_two = new Node(4);
+    list_two->next = new Node(6);
+    list_two->next->next = new Node(list_one->next->next->data);
+    list_two->next->next->next = new Node(2);
+    list_two->next->next->next->next = new Node(1);
+
+    // LinkedList *res = list->sum_list(list_one, list_two);
+    // res->display();
+    cout << list->intersection(list_one, list_two);
+>>>>>>> d4f9fad (Day 7 - 100 days of code)
 
     return 0;
 }
