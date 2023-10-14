@@ -6,6 +6,11 @@
     "string": "cpp",
     "ostream": "cpp",
     "iosfwd": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "__bit_reference": "cpp",
+    "__hash_table": "cpp",
+    "string_view": "cpp",
+    "unordered_set": "cpp",
+    "__string": "cpp"
   }
 }
