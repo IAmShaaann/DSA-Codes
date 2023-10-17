@@ -18,18 +18,20 @@ int better(vector<int> arr) // time_complexy - O(N2) space_complexity = O(1)
     return max_sum;
 }
 int solution(vector<int> arr) // time_complexity - O(N) space_complexity = O(1)
-    long long sum = 0;
-long long mx = INT_MIN;
-for (int i = 0; i < arr.size(); i++)
 {
-    sum += arr[i];
-    mx = max(mx, sum);
-    if (sum < 0)
+
+    long long sum = 0;
+    long long mx = INT_MIN;
+    for (int i = 0; i < arr.size(); i++)
     {
-        sum = 0;
+        sum += arr[i];
+        mx = max(mx, sum);
+        if (sum < 0)
+        {
+            sum = 0;
+        }
     }
-}
-return mx;
+    return mx;
 }
 
 int main()
