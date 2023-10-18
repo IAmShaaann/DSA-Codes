@@ -10,7 +10,7 @@ int better(vector<int> arr) // time_complexy - O(N2) space_complexity = O(1)
     {
         for (int j = i; j < n; j++)
         {
-            sum += arr[k];
+            sum += arr[j];
             max_sum = max(sum, max_sum);
         }
         sum = 0;
