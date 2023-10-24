@@ -27,7 +27,7 @@ int solution(vector<int> arr)
 
 int main()
 {
-    int arr[] = {6, 5, 5};
+    int arr[] = {7, 4, 3, 7, 7, 4, 7};
     vector<int> vec;
     int K = 1;
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
