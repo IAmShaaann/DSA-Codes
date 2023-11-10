@@ -1,6 +1,10 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+/*
+    Question - Given an array and window size K, Find the max sum subarray with given K.
+    Example - array = [2, 5, 1, 8, 2, 9, 1] | K = 4 | Output = 20 - [8, 2 ,9 ,1]
+*/
 
 int brute_force(vector<int> arr)
 {
@@ -17,29 +21,35 @@ int brute_force(vector<int> arr)
     }
     return mx;
 }
-int solution(vector<int> arr)
+int solution(vector<int> arr, int window)
 {
     int mx = INT_MIN;
-    int sum = arr[0] + arr[1] + arr[2];
-
-    for (int i = 3; i < arr.size(); i++)
+    int sum = 0;
+    for (int i = 0; i < window; i++)
     {
-        sum -= arr[i - 3];
         sum += arr[i];
-        mx = max(mx, sum);
     }
+    cout << sum << endl;
+    for (int i = window; i < arr.size(); i++)
+    {
+        sum -= arr[i - window];
+        sum += arr[i];
+        mx = max(sum, mx);
+    }
+
     return mx;
 }
 
 int main()
 {
 
-    int arr[] = {1, 2, 3, 3, 5, 2, 3};
+    int arr[] = {2, 5, 1, 8, 2, 9, 1};
     vector<int> values;
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     {
         values.push_back(arr[i]);
     }
-    cout << solution(values);
+    int K = 4;
+    cout << solution(values, K);
     return 0;
 }
