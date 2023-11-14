@@ -29,7 +29,6 @@ int solution(vector<int> arr, int window)
     {
         sum += arr[i];
     }
-    cout << sum << endl;
     for (int i = window; i < arr.size(); i++)
     {
         sum -= arr[i - window];
