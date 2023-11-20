@@ -71,9 +71,9 @@ int solution(vector<int> arr, int K)
 int main()
 {
     int arr[] = {
-        -1, 1, 1};
+        2, 1, 1, 1, 3, 4, 5};
     vector<int> vec;
-    int K = 1;
+    int K = 5;
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
     {
         vec.push_back(arr[i]);
