@@ -55,7 +55,7 @@ void solution(vector<int> arr, int target)
 int main()
 {
     int arr[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
-    int target = 15;
+    int target = 7;
     vector<int> vec;
     for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++)
         vec.push_back(arr[i]);
