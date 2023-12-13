@@ -3,6 +3,9 @@
 #include <stack>
 #include <vector>
 using namespace std;
+/*
+    Input -> [5,2,6,7,2,5] => Output -> [6, 6, 7, -1, 5, -1]; Return the nearest greater element from right of arr[i]
+*/
 vector<int> brute_force(vector<int> arr)
 {
     vector<int> res;
@@ -42,7 +45,7 @@ vector<int> solution(vector<int> arr)
         }
         else if (st.size() > 0 and arr[i] > st.top())
         {
-            while (arr[i] > st.top())
+            while (!st.empty() && arr[i] > st.top())
             {
                 st.pop();
             }
